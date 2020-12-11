@@ -115,7 +115,23 @@ class ACERMeter(object):
                             'bpcer': bpcer}
 
         return result_dict
-
+    def get_mismatch_array(self, thr=0.5):
+        y_pred_bin = self.output.copy()
+        y_pred_bin[y_pred_bin < thr] = 0
+        y_pred_bin[y_pred_bin >= thr] = 1
+        y_pred_bin.astype(np.int64)
+        
+        target = self.target.copy()
+        target.astype(np.int64)
+        
+        result = []    
+        for i in range(y_pred_bin.shape[0]):
+            if y_pred_bin[i] != target[i]:
+                result.append("X")
+            else:
+                result.append("O")
+                
+        return result
 
 class ROCMeter(object):
     """Compute TPR with fixed FPR"""
