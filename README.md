@@ -77,3 +77,14 @@ Compile submit_file
 python compile_submit_file.py
 ```
 
+
+
+### command
+```bash
+CUDA_VISIBLE_DEVICES=0 python demo.py \
+        --shape_predictor /home/hieuvecto/poc/shape_predictor_68_face_landmarks.dat  \
+        --test_config_path experiment_tests/protocol_4_1/protocol_4_1.config  \
+        --model_config_path experiments/rgb_track/exp1_protocol_4_1/rgb_track_exp1_protocol_4_1.config  \
+        --checkpoint_path experiments/rgb_track/exp1_protocol_4_1/checkpoints/model_4.pth
+
+```
